@@ -23,12 +23,13 @@ const teamSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    /*year: {
-        type: Number, 
-        min: 1800, 
-        max: 2050, 
-        required: false 
-    }*/
+
+    active: {
+      type: Boolean,
+      trim: true,
+      default: true,
+    },
+
   },
   {
     timestamps: true,
