@@ -6,6 +6,7 @@ import matchesRoute from './routes/matches.js'
 import usersRoute from './routes/users.js'
 import fieldsRoute from './routes/fields.js'
 import teamsRoute from './routes/teams.js'
+import standingsRoute from './routes/standings.js'
 import cors from 'cors'
 
 const app = express();
@@ -22,6 +23,7 @@ app.use('/fields', fieldsRoute);
 app.use('/teams', teamsRoute);
 app.use('/matches', matchesRoute);
 app.use('/matchdays', matchdaysRoute);
+app.use('/standings', standingsRoute);
 
 try {
     const PORT = process.env.PORT || 5100;
