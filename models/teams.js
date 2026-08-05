@@ -3,8 +3,8 @@ import Team from '../schemas/teams.js'
 
 class teamsModel {
 
-    async getAll() {
-        return await Team.find()
+    async getAll(filter = {}) {
+        return await Team.find(filter)
     }
 
     async getOne(id) {

@@ -5,8 +5,12 @@ class teamsController {
     contructor() {}
 
     async getAll(req, res) {
+        const filter = {};
+        if (req.query.active !== undefined) {
+            filter.active = req.query.active === "true";
+        }
         try {
-            const data = await teamsModel.getAll()
+            const data = await teamsModel.getAll(filter)
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send(e)

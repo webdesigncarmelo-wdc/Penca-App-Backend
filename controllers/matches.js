@@ -5,8 +5,10 @@ class matchesController {
     contructor() {}
 
     async getAll(req, res) {
+        const filter = {};
+        if (req.query.status) filter.status = req.query.status;
         try {
-            const data = await matchesModel.getAll(req.query)
+            const data = await matchesModel.getAll(filter)
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send(e)
