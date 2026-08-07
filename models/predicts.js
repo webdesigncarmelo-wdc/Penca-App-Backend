@@ -34,23 +34,7 @@ class predictsModel {
             .populate(matchPopulate)
     }
 
-    async getByUserAndMatch(user, match) {
-        return await Predict.findOne({ user, match })
-            .populate(userPopulate)
-            .populate(matchPopulate)
-    }
-
-    async getByMatch(id) {
-        return await Predict.find({ match : id })
-            .populate(userPopulate)
-    }
-
-    async getByUser(id) {
-        return await Predict.find({ user : id })
-            .populate(matchPopulate)
-    }
-
-    async save(predict) {
+    async upsert(predict) {
         const savedPredict = await Predict.findOneAndUpdate(
             {
                 user: predict.user,
@@ -63,12 +47,10 @@ class predictsModel {
             }
         );
 
-        return await savedPredict
+        return await Predict.findById(savedPredict._id)
             .populate(userPopulate)
             .populate(matchPopulate);
     }
-
-    
 
     async delete(id) {
         return await Predict.findByIdAndDelete( id )

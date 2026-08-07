@@ -2,39 +2,39 @@ import mongoose from "mongoose"
 
 const predictSchema = new mongoose.Schema({
   
-    match: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Match",
-      required: true
-    },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
+  match: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Match",
+    required: true
+  },
 
-    homeGoals: {
-      type: Number,
-      required: true,
-      min: 0,
-      max: 10,
-      validate: {
-        validator: (value) => Number.isInteger(value),
-        message: "Goals must be an integer",
-      },
+  homeGoals: {
+    type: Number,
+    required: true,
+    min: 0,
+    max: 10,
+    validate: {
+      validator: (value) => Number.isInteger(value),
+      message: "Goals must be an integer",
     },
+  },
 
-    awayGoals: {
-      type: Number,
-      required: true,
-      min: 0,
-      max: 10,
-      validate: {
-        validator: (value) => Number.isInteger(value),
-        message: "Goals must be an integer",
-      },
+  awayGoals: {
+    type: Number,
+    required: true,
+    min: 0,
+    max: 10,
+    validate: {
+      validator: (value) => Number.isInteger(value),
+      message: "Goals must be an integer",
     },
+  },
 
   },
 

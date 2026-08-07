@@ -5,9 +5,8 @@ class predictsController {
 
     async getAll(req, res) {
         const filter = {};
-        /*if (req.query.active !== undefined) {
-            filter.active = req.query.active === "true";
-        }*/
+        if (req.query.user) filter.user = req.query.user;
+        if (req.query.match) filter.match = req.query.match;
         try {
             const data = await predictsModel.getAll(filter)
             res.status(200).json(data)
@@ -25,33 +24,12 @@ class predictsController {
         }
     }
 
-    async getByUserAndMatch(req, res) {
-        const filter = {};
-        if (req.query.user) filter.user = req.query.user;
-        if (req.query.match) filter.match = req.query.match;
+    async upsert(req, res) {
         try {
-            const data = await predictsModel.getOne({ user: filter.user, match: filter.umatch })
-            res.status(200).json(data)
-        } catch (e) {
-            res.status(500).send(e)
-        }
-    }
-    
-    async create(req, res) {
-        try {
-            const data = await predictsModel.create(req.body)
+            const data = await predictsModel.upsert(req.body)
             res.status(201).json(data)
         } catch (e) {
-            res.status(500).send(e)
-        }
-    }
-
-    async update(req, res) {
-        try {
-            const data = await predictsModel.update(req.params.id, req.body)
-            res.status(200).json(data)
-        } catch (e) {
-            console.log(e)
+            console.error(e);
             res.status(500).send(e)
         }
     }
