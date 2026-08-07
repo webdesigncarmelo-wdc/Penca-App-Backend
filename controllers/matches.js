@@ -17,13 +17,13 @@ class matchesController {
 
     async getAll(req, res) {
     try {
-            const data = await matchesModel.getAll(
-                req.query.status ? { status: req.query.status } : {} );
-            res.status(200).json(data);
-        } catch (e) {
-            res.status(500).send(e);
-        }
+        const data = await matchesModel.getAll(
+            req.query.status ? { status: req.query.status } : {} );
+        res.status(200).json(data);
+    } catch (e) {
+        res.status(500).send(e);
     }
+}
 
     async getOne(req, res) {
         try {
@@ -83,7 +83,7 @@ class matchesController {
     async delete(req, res) {
         try {
             const data = await matchesModel.delete(req.params.id)
-            res.status(206).json(data)
+            res.status(200).json(data)
         } catch (e) {
             res.status(500).send(e)
         }
