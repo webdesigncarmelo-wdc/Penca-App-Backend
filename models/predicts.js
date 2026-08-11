@@ -1,37 +1,19 @@
 // import mongoose from 'mongoose'
 import Predict from '../schemas/predicts.js'
-
-const userPopulate = {
-    path: "user",
-    select: "username image"
-};
-
-const matchPopulate = {
-    path: "match",
-    populate: [
-        {
-            path: "homeTeam",
-            select: "name shortName image"
-        },
-        {
-            path: "awayTeam",
-            select: "name shortName image"
-        }
-    ]
-};
+import populate from "../services/populate.js";
 
 class predictsModel {
 
     async getAll(filter = {}) {
         return await Predict.find(filter)
-            .populate(userPopulate)
-            .populate(matchPopulate)
+            .populate(populate.user)
+            .populate(populate.predict)
     }
 
     async getOne(id) {
         return await Predict.findById(id)
-            .populate(userPopulate)
-            .populate(matchPopulate)
+            .populate(populate.user)
+            .populate(populate.predict)
     }
 
     async upsert(predict) {
@@ -48,8 +30,8 @@ class predictsModel {
         );
 
         return await Predict.findById(savedPredict._id)
-            .populate(userPopulate)
-            .populate(matchPopulate);
+            .populate(populate.user)
+            .populate(populate.predict)
     }
 
     async delete(id) {

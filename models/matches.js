@@ -1,32 +1,33 @@
 import mongoose from 'mongoose'
 import Match from '../schemas/matches.js'
+import populate from "../services/populate.js";
 
 class matchesModel {
 
     async getAll(filter = {}) {
         return await Match.find(filter)
-            .populate("homeTeam")
-            .populate("awayTeam");
+            .select("-createdAt -updatedAt -__v")
+            .populate(populate.match)
     }
 
     async getOne(id) {
         return await Match.findById(id)
-            .populate("homeTeam")
-            .populate("awayTeam");
+            .select("-createdAt -updatedAt -__v")
+            .populate(populate.match)
     }
 
     async getByMatchday(id) {
         return await Match.find({ matchday : id })
-            .populate("homeTeam")
-            .populate("awayTeam");
+            .select("-createdAt -updatedAt -__v")
+            .populate(populate.match)
     }
 
     async getByTeam(id) {
         return await Match.find({ $or: [
             { homeTeam: id },
             { awayTeam: id }]})
-            .populate("homeTeam")
-            .populate("awayTeam");
+            .select("-createdAt -updatedAt -__v")
+            .populate(populate.match)
     }
 
     async create(match) {
