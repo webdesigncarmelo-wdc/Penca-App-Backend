@@ -8,6 +8,8 @@ import fieldsRoute from './routes/fields.js'
 import teamsRoute from './routes/teams.js'
 import standingsRoute from './routes/standings.js'
 import predictsRoute from './routes/predicts.js'
+import competitionsRoute from './routes/competitions.js'
+import seasonsRoute from './routes/seasons.js'
 import cors from 'cors'
 
 const app = express();
@@ -26,6 +28,8 @@ app.use('/matches', matchesRoute);
 app.use('/matchdays', matchdaysRoute);
 app.use('/standings', standingsRoute);
 app.use('/predicts', predictsRoute);
+app.use('/competitions', competitionsRoute);
+app.use('/seasons', seasonsRoute);
 
 try {
     const PORT = process.env.PORT || 5100;

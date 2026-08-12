@@ -1,20 +1,11 @@
 import mongoose from "mongoose";
 
-const teamSchema = new mongoose.Schema(
+const competitionSchema = new mongoose.Schema(
   {
-    shortName: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-      trim: true,
-      minlength: 3,
-      maxlength: 3
-    },
-
     name: {
       type: String,
       required: true,
+      unique: true,
       trim: true,
     },
 
@@ -26,6 +17,7 @@ const teamSchema = new mongoose.Schema(
 
     active: {
       type: Boolean,
+      trim: true,
       default: true,
     },
 
@@ -35,4 +27,4 @@ const teamSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model( "Team" , teamSchema);
+export default mongoose.model( "Competition" , competitionSchema);

@@ -15,16 +15,6 @@ class matchesController {
         }
     }
 
-    async getAll(req, res) {
-    try {
-        const data = await matchesModel.getAll(
-            req.query.status ? { status: req.query.status } : {} );
-        res.status(200).json(data);
-    } catch (e) {
-        res.status(500).send(e);
-    }
-}
-
     async getOne(req, res) {
         try {
             const data = await matchesModel.getOne(req.params.id)
