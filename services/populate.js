@@ -41,7 +41,19 @@ const populateService = {
 
     team: [],
 
-    matchday: [],
+    matchday: [
+        {
+            path: "championship",
+            select: "name"
+        },
+    ],
+
+    season:[
+        {
+            path: "competition",
+            select: "name"
+        },
+    ],
 };
 
 export default populateService;

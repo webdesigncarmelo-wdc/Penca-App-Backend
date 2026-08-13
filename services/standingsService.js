@@ -1,14 +1,14 @@
-import teamsModel from "../models/teams.js";
+import championshipsModel from "../models/championships.js";
 import matchesModel from "../models/matches.js";
 
 class StandingsService {
     async getAll(filter) {
 
         // recupero los equipos activos
-        const teams = await teamsModel.getAll({ active: true });
+        const teams = await championshipsModel.getTeams("6a7cebb946c24943d4b3b76c");
 
         // construyo la tabla para los equipos activos
-        const standings = teams.map(team => ({
+        const standings = teams.teams.map(team => ({
             team,
             played: 0,
             won: 0,
@@ -65,7 +65,7 @@ class StandingsService {
             }
 
         });
-
+    
     return [...standings].sort((a, b) => {
 
         if (b.points !== a.points) {

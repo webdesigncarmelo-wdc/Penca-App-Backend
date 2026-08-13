@@ -10,6 +10,7 @@ import standingsRoute from './routes/standings.js'
 import predictsRoute from './routes/predicts.js'
 import competitionsRoute from './routes/competitions.js'
 import seasonsRoute from './routes/seasons.js'
+import championshipsRoute from './routes/championships.js'
 import cors from 'cors'
 
 const app = express();
@@ -30,6 +31,7 @@ app.use('/standings', standingsRoute);
 app.use('/predicts', predictsRoute);
 app.use('/competitions', competitionsRoute);
 app.use('/seasons', seasonsRoute);
+app.use('/championships', championshipsRoute);
 
 try {
     const PORT = process.env.PORT || 5100;

@@ -15,18 +15,12 @@ const matchdaySchema = new mongoose.Schema({
         default: Date.now
     },
 
-    championship : { 
-        type: String,
-        required: true  
-    },
-
-    /*
     championship: {
           type: mongoose.Schema.Types.ObjectId,
           ref: "Championship",
           required: true,
-        },
-    */
+    },
+    
 }, 
 {
     timestamps: true // agrega createdAt y updatedAt automáticamente

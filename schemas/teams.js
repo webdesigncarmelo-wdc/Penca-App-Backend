@@ -24,11 +24,6 @@ const teamSchema = new mongoose.Schema(
       trim: true,
     },
 
-    active: {
-      type: Boolean,
-      default: true,
-    },
-
   },
   {
     timestamps: true,
