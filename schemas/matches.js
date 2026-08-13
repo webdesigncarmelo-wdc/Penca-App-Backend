@@ -52,4 +52,7 @@ const matchSchema = new mongoose.Schema({
   }
 );
 
+// indice para ayuar a buscar por matchdays
+matchSchema.index({ matchday: 1, status: 1 });
+
 export default mongoose.model( 'Match' , matchSchema)

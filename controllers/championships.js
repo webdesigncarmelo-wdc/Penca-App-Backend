@@ -31,10 +31,13 @@ class championshipsController {
     }
 
     async getMatches(req, res) {
+        const start = performance.now();
+
         const filter = {};
         if (req.query.status) filter.status = req.query.status;
         try {
             const data = await championshipsModel.getMatches(req.params.id, filter)
+        
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send(e)

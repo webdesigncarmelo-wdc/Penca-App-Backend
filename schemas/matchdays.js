@@ -26,4 +26,7 @@ const matchdaySchema = new mongoose.Schema({
     timestamps: true // agrega createdAt y updatedAt automáticamente
 })
 
+// indice para ayuar a buscar por campeonato
+matchdaySchema.index({ championship: 1 });
+
 export default mongoose.model( 'Matchday' , matchdaySchema)
