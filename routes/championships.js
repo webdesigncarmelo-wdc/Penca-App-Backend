@@ -5,6 +5,7 @@ import { verifyToken } from '../helpers/auth.js'
 const route = express.Router()
 
 route.get('/', championshipsController.getAll)
+route.get('/season/:id', championshipsController.getBySeason)
 route.get('/:id/teams', championshipsController.getTeams)
 route.get('/:id/matches', championshipsController.getMatches)
 route.get('/:id', championshipsController.getOne)

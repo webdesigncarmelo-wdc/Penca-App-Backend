@@ -9,6 +9,12 @@ class championshipsModel {
         return await Championship.find(filter)
         .select("-createdAt -updatedAt -__v")
     }
+    
+    // podria filtrarse por query (opcional)
+    async getBySeason(id) {
+        return await Championship.find({ season : id })
+        .select("-createdAt -updatedAt -__v")
+    }
 
     async getOne(id) {
         return await Championship.findOne({ _id: new mongoose.Types.ObjectId(id) })

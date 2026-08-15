@@ -6,7 +6,8 @@ class seasonsController {
 
     async getAll(req, res) {
         const filter = {};
-        //if (req.query.status) filter.status = req.query.status;
+        if (req.query.status) filter.status = req.query.status;
+        if (req.query.competition) filter.competition = req.query.competition;
         try {
             const data = await seasonsModel.getAll(filter)
             res.status(200).json(data)
@@ -24,7 +25,7 @@ class seasonsController {
         }
     }
 
-    async getSeasonsByCompetition(req, res) {
+    async getByCompetition(req, res) {
         try {
             const data = await seasonsModel.getByCompetition(req.params.id)
             res.status(200).json(data)

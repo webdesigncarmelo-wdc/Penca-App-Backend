@@ -1,4 +1,5 @@
 import championshipsModel from '../models/championships.js'
+import seasonsModel from '../models/seasons.js'
 
 class championshipsController {
     constructor() {}
@@ -6,6 +7,15 @@ class championshipsController {
     async getAll(req, res) {
         try {
             const data = await championshipsModel.getAll()
+            res.status(200).json(data)
+        } catch (e) {
+            res.status(500).send(e)
+        }
+    }
+
+    async getBySeason(req, res) {
+        try {
+            const data = await championshipsModel.getBySeason(req.params.id)
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send(e)
@@ -46,6 +56,10 @@ class championshipsController {
     
     async create(req, res) {
         try {
+            //validacion de season
+            const season = await seasonsModel.getOne(req.body.season)
+            if (!season) { return res.status(400).json({message: "Season not found"});}
+
             const data = await championshipsModel.create(req.body)
             res.status(201).json(data)
         } catch (e) {

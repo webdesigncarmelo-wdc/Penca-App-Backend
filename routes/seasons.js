@@ -6,7 +6,7 @@ const route = express.Router()
 
 route.get('/', seasonsController.getAll)
 route.get('/:id', seasonsController.getOne)
-route.get('/competition/:id', seasonsController.getSeasonsByCompetition)
+route.get('/competition/:id', seasonsController.getByCompetition)
 route.post('/', verifyToken, seasonsController.create)
 route.put('/:id', verifyToken, seasonsController.update)
 route.delete('/:id', verifyToken, seasonsController.delete)

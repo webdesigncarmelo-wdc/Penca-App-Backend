@@ -9,7 +9,6 @@ class seasonsModel {
             .select("-createdAt -updatedAt -__v")
             .populate(populate.season)
     }
-
     async getOne(id) {
         return await Season.findById(id)
             .select("-createdAt -updatedAt -__v")
