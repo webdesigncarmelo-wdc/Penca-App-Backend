@@ -6,9 +6,18 @@ class predictsModel {
 
     async getAll(filter = {}) {
         return await Predict.find(filter)
+        .select("-createdAt -updatedAt -__v")
+    }
+
+    // get con populate
+    /*
+    async getAll(filter = {}) {
+        return await Predict.find(filter)
             .populate(populate.user)
             .populate(populate.predict)
     }
+    */
+
 
     async getOne(id) {
         return await Predict.findById(id)

@@ -6,7 +6,7 @@ const route = express.Router()
 
 route.get('/', predictsController.getAll)
 route.get('/:id', predictsController.getOne)
-route.post('/', verifyToken, predictsController.upsert)
+route.post('/', /*verifyToken,*/ predictsController.upsert)
 route.delete('/:id', verifyToken, predictsController.delete)
 
 export default route;

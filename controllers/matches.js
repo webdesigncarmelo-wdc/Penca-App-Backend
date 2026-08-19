@@ -24,9 +24,9 @@ class matchesController {
         }
     }
 
-    async getMatchesByMatchday(req, res) {
+    async getByMatchday(req, res) {
         try {
-            const data = await matchesModel.getAll(req.params.id)
+            const data = await matchesModel.getByMatchday(req.params.id)
             res.status(200).json(data)
         } catch (e) {
             res.status(500).send(e)
