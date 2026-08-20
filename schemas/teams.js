@@ -5,7 +5,6 @@ const teamSchema = new mongoose.Schema(
     shortName: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
       trim: true,
       minlength: 3,
@@ -24,10 +23,21 @@ const teamSchema = new mongoose.Schema(
       trim: true,
     },
 
+    competition: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Competition",
+      required: true
+    },
+
   },
   {
     timestamps: true,
   }
 );
+
+teamSchema.index(
+    { competition: 1, shortName: 1 },
+    { unique: true }
+)
 
 export default mongoose.model( "Team" , teamSchema);

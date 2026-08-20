@@ -5,8 +5,12 @@ class StandingsController {
 
     async getAll(req, res) {
         const filter = {};
-        if (req.query.league) filter.league = req.query.league;
-        if (req.query.tournament) filter.tournament = req.query.tournament;
+        if (req.query.championship) filter.championship = req.query.championship;
+
+        // debugs everywhere
+        // if (req.query.status) filter.status = req.query.status;
+        // console.log(filter.championship)
+        // console.log(filter.status)
         try {
             const data = await standingsService.getAll(filter);
             res.status(200).json(data);
