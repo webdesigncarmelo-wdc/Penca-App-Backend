@@ -48,6 +48,21 @@ const populateService = {
         },
     ],
 
+    fullMatchday: [
+        {
+            path: "championship",
+            select: "name season",
+            populate: {
+                path: "season",
+                select: "name competition",
+                populate: {
+                    path: "competition",
+                    select: "name"
+                }
+            }
+        }
+    ],
+
     season:[
         {
             path: "competition",

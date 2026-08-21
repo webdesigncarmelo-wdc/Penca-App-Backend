@@ -46,6 +46,11 @@ const matchSchema = new mongoose.Schema({
       default: "pending",
       required: true
     },
+
+    date: {
+      type: Date,
+      required: true
+    },
   },
   {
     timestamps: true,

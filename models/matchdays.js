@@ -7,7 +7,7 @@ class matchdaysModel {
     async getAll(filter = {}) {
         return await Matchday.find(filter)
         .select("-createdAt -updatedAt -__v")
-        // .populate(populate.matchday)
+        .populate(populate.fullMatchday)
     }
 
     async getOne(id) {
