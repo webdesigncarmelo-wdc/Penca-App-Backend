@@ -7,12 +7,12 @@ class usersModel {
         return await User.find()
     }
 
+    async getOne(id) {
+        return await User.findById(id)
+    }
+    
     async create(user) {
         return await User.create(user)
-    }
-
-    async getOne(filter) {
-        return await User.findOne(filter)
     }
 
 }

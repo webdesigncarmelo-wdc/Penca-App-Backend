@@ -7,6 +7,7 @@ const route = express.Router()
 route.post('/register', usersController.register)
 route.post('/login', usersController.login)
 route.get('/', usersController.getAll)
+route.get('/:id', usersController.getOne)
 route.get('/profile', verifyToken, usersController.profile)
 
 export default route;

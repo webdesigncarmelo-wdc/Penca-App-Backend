@@ -53,6 +53,15 @@ class championshipsController {
             res.status(500).send(e)
         }
     }
+
+    async getMatchdays(req, res) {
+        try {
+            const data = await championshipsModel.getMatchdays(req.params.id)
+            res.status(200).json(data)
+        } catch (e) {
+            res.status(500).send(e)
+        }
+    }
     
     async create(req, res) {
         try {

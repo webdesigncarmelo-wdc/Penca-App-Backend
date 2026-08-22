@@ -10,6 +10,11 @@ class matchdaysModel {
         .populate(populate.fullMatchday)
     }
 
+    async getAll2(filter = {}) {
+        return await Matchday.find(filter)
+        .select("-createdAt -updatedAt -__v -date -championship")
+    }
+
     async getOne(id) {
         return await Matchday.findOne({ _id: new mongoose.Types.ObjectId(id) })
         .select("-createdAt -updatedAt -__v")

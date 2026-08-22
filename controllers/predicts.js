@@ -1,5 +1,5 @@
 import predictsModel from '../models/predicts.js'
-import { canCreatePredict } from '../services/predictsService.js'
+import { canPredict } from '../services/predictsService.js'
 
 class predictsController {
     constructor() {}
@@ -28,7 +28,7 @@ class predictsController {
     async upsert(req, res) {
         try {
 
-            const result = await canCreatePredict(req.body.match)
+            const result = await canPredict(req.body)
 
             if (!result.allowed) return res.status(400).json({ message: result.message })
 

@@ -38,47 +38,10 @@ class championshipsModel {
         return matches;
     }
 
-    /* para medir rendimiento
-    
-    async getMatches(id, filter) {
-        console.log("react native")
-        // medir Matchdays
-        const startMatchdays = performance.now();
-
-        const matchdays = await matchdaysModel.getAll({
-            championship: id
-        });
-
-        const endMatchdays = performance.now();
-
-        console.log(
-            `Matchdays: ${(endMatchdays - startMatchdays).toFixed(2)} ms`
-        );
-
-
-        // extraigo los IDs
-        const matchdayIds = matchdays.map(
-            matchday => matchday._id
-        );
-
-
-        // medir Matches
-        const startMatches = performance.now();
-
-        const matches = await matchesModel.getAll({
-            matchday: { $in: matchdayIds },
-            ...filter
-        });
-
-        const endMatches = performance.now();
-
-        console.log(
-            `Matches: ${(endMatches - startMatches).toFixed(2)} ms`
-        );
-
-
-        return matches;
-    }*/
+    async getMatchdays(id) {
+        // devuelvo todos los matchdays de un campeonato
+        return await matchdaysModel.getAll2({ championship: id })
+    }
 
     async create(championship) {
         return await Championship.create(championship)
